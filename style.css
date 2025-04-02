@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* background-image: url(./Assets/pngtree-background-of-monitor-computer-with-online-game-streaming-desktop-image_15734081.jpg); */
+  background-image: url(./Assets/pngtree-background-of-monitor-computer-with-online-game-streaming-desktop-image_15734081.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,7 +39,7 @@
 .game_container h1 {
   margin-bottom: 3rem;
 }
-.gameImages {
+.gameImagesContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,18 +47,25 @@
   height: 250px;
 }
 
-.imageDiv {
+.AvatarDiv {
   width: 160px;
   height: 150px;
   /* position: absolute; */
 }
-.imageDiv p {
+.AvatarDiv p {
   margin-top: 12px;
   font-size: 15px;
-  /* color: #fff; */
+  color: #fff;
 }
 
-.imageDiv img {
+.imageImg {
+  width: 160px;
+  height: 150px;
+  position: absolute;
+  object-fit: contain;
+}
+
+.AvatarDiv img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -69,12 +76,18 @@
   position: absolute;
   top: 5px;
   left: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
 .scoreDiv {
   display: none;
   position: absolute;
   top: 5px;
   right: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .mainDiv {
@@ -83,13 +96,11 @@
   justify-content: space-between;
 }
 
-.imagesDiv {
-  width: 100px;
-  /* height: 120px; */
+.AllImageContainer {
 }
 
-.imagesDiv img {
-  width: 100%;
-  /* height: 100%; */
-  object-fit: contain;
+.AllImageContainer img {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
 }

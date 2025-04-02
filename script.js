@@ -1,16 +1,16 @@
 const wrapper = document.querySelector(".wrapper");
 const startBtn = document.querySelector("#startBtn");
 const gameContainer = document.querySelector(".game_container");
-const imagesDivs = document.querySelectorAll(".imageDiv");
+const AvatarDivs = document.querySelectorAll(".AvatarDiv");
 // const gamingZone = document.querySelector(".gamingZone");
 const scoreDiv = document.querySelector(".scoreDiv");
 const scoreSpan = document.querySelector("#scoreSpan");
 const timerSpan = document.querySelector("#timerSpan");
 const timerDiv = document.querySelector(".timerDiv");
 
-let timming = 0;
+let timming = 1;
 
-imagesDivs.forEach((image) => {
+AvatarDivs.forEach((image) => {
   image.addEventListener("click", displaygame);
   // console.log(image);
 });
@@ -33,34 +33,36 @@ function timerCount() {
 }
 
 function displaygame(e) {
+  e.preventDefault();
   timerCount();
   scoreDiv.style.display = "block";
 
   gameContainer.style.display = "none";
-  e.preventDefault();
   const mainDiv = document.createElement("div");
   mainDiv.className = "mainDiv";
 
   let imageCount = setInterval(() => {
     const imageSrc = e.target.src;
-    const imagesDiv = document.createElement("div");
-    imagesDiv.className = "imagesDiv";
+    const AllImageContainer = document.createElement("div");
+    AllImageContainer.className = "AllImageContainer";
     const img = document.createElement("img");
+    img.src = imageSrc;
+    img.className = "imageImg";
+    AllImageContainer.append(img);
+    mainDiv.append(AllImageContainer);
+
+    img.style.left = RandomImagePosition("x") + "px";
+    img.style.top = RandomImagePosition("y") + "px";
     img.addEventListener("click", function () {
       scoreSpan.innerHTML++;
-      //   console.log(scoreSpan);
-      // console.log();
+      img.remove();
     });
-    img.src = imageSrc;
 
-    // img.clientTop
-    // img.clientLeft
-
-    imagesDiv.append(img);
-    mainDiv.append(imagesDiv);
     console.log(mainDiv);
 
     if (timming === 10) {
+      // gameContainer.style.display = "block";
+
       clearInterval(imageCount);
     }
   }, 1000);
@@ -75,4 +77,17 @@ function button() {
   gameContainer.style.display = "block";
 }
 
-function RandomImagePosition() {}
+function RandomImagePosition(axis) {
+  const RandomPosition = Math.floor(Math.random() * 1000);
+  // return RandomPosition;
+
+  if (axis === "x") {
+    if (RandomPosition < 50 || RandomPosition > 1000)
+      return RandomImagePosition(axis);
+    else return RandomPosition;
+  } else {
+    if (RandomPosition < 50 || RandomPosition > 380)
+      return RandomImagePosition(axis);
+    else return RandomPosition;
+  }
+}
